@@ -6,9 +6,6 @@ import 'reservation_page.dart';
 import 'Hotels_page.dart';
 
 class HotelDetailsPage extends StatelessWidget {
-  final Hotel hotel;
-
-  HotelDetailsPage({required this.hotel});
 
   @override
   Widget build(BuildContext context) {
@@ -36,36 +33,36 @@ class HotelDetailsPage extends StatelessWidget {
           children: <Widget>[
             ClipRRect(
               borderRadius: BorderRadius.circular(12.0),
-              child: Image.asset(
-                hotel.image,
-                width: double.infinity,
-                height: 200.0,
-                fit: BoxFit.cover,
-              ),
+              // child: Image.asset(
+              //   hotel.image,
+              //   width: double.infinity,
+              //   height: 200.0,
+              //   fit: BoxFit.cover,
+              // ),
             ),
             SizedBox(height: 16.0),
-            Row(
-              children: [
-                Icon(Icons.hotel, color: Colors.blueGrey),
-                SizedBox(width: 8.0),
-                Text(
-                  hotel.name,
-                  style: TextStyle(
-                    fontSize: 24.0,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.blueGrey,
-                  ),
-                ),
-              ],
-            ),
+            // Row(
+            //   children: [
+            //     Icon(Icons.hotel, color: Colors.blueGrey),
+            //     SizedBox(width: 8.0),
+            //     Text(
+            //       hotel.name,
+            //       style: TextStyle(
+            //         fontSize: 24.0,
+            //         fontWeight: FontWeight.bold,
+            //         color: Colors.blueGrey,
+            //       ),
+            //     ),
+            //   ],
+            // ),
             SizedBox(height: 8.0),
-            Text(
-              hotel.description,
-              style: TextStyle(
-                fontSize: 16.0,
-                color: Colors.grey[600],
-              ),
-            ),
+            // Text(
+            //   hotel.description,
+            //   style: TextStyle(
+            //     fontSize: 16.0,
+            //     color: Colors.grey[600],
+            //   ),
+            // ),
             SizedBox(height: 8.0),
             Divider(
               thickness: 1.0,
@@ -86,14 +83,14 @@ class HotelDetailsPage extends StatelessWidget {
                 ),
               ],
             ),
-            Text(
-              '        ${hotel.price}',
-              style: TextStyle(
-                fontSize: 18.0,
-
-                color: Colors.black,
-              ),
-            ),
+            // Text(
+            //   '        ${hotel.price}',
+            //   style: TextStyle(
+            //     fontSize: 18.0,
+            //
+            //     color: Colors.black,
+            //   ),
+            // ),
             SizedBox(height: 8.0),
             Divider(
               thickness: 1.0,
