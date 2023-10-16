@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import '../CustomPages/appbar.dart';
 import '../models/user_model.dart';
 import '../repository/user_repo.dart';
+import 'add_user.dart';
 
 class UserView extends StatefulWidget {
   const UserView({Key? key}) : super(key: key);
@@ -27,7 +28,10 @@ class _UserView extends State<UserView> {
           appBar: SearchAppBar(),
           floatingActionButton: FloatingActionButton(child: Icon(Icons.add),
               onPressed: ()async{
-                var isAdd=await Navigator.of(context).pushNamed('/proadd');
+                var isAdd=await  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => userAdd()),
+                );
                 if(isAdd!=null && isAdd==true){
                   setState(() {
 

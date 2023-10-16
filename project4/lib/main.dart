@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project4/views/users.dart';
 import 'MainPages/Hotels_page.dart';
 import 'MainPages/Home.dart';
 import 'MainPages/login_page.dart';
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: DashboardPage(),
+      home: UserView(),
       //home: ProfilePage(),
       //home: FooterBar(),
       //home:HotelColumn(),

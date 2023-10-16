@@ -34,28 +34,28 @@ class UserRepository{
     }
   }
 
-  // Future<Object> add(UserModel obj)async{
-  //   try{
-  //     await Future.delayed(Duration(milliseconds: 300));
-  //     var addRes = await dio.post('https://fakestoreapi.com/products', data: obj.toJson());
-  //     print("###########################################add res: ${addRes}");
-  //     if (addRes.statusCode == 200) {
-  //
-  //       var data = addRes.data;
-  //       var prod = UserModel.fromJson(data);
-  //       if(prod != null){
-  //         return prod.id??0;
-  //       }
-  //       else{
-  //         return 0;
-  //       }
-  //     }
-  //
-  //     return 0;
-  //   }
-  //   catch(ex){
-  //     rethrow;
-  //   }
-  // }
+  Future<Object> addd(UserModel obj)async{
+    try{
+      await Future.delayed(Duration(milliseconds: 300));
+      var addRes = await dio.post('https://fakestoreapi.com/products', data: obj.toJson());
+      print("###########################################add res: ${addRes}");
+      if (addRes.statusCode == 200) {
+
+        var data = addRes.data;
+        var prod = UserModel.fromJson(data);
+        if(prod != null){
+          return prod.id??0;
+        }
+        else{
+          return 0;
+        }
+      }
+
+      return 0;
+    }
+    catch(ex){
+      rethrow;
+    }
+  }
 
 }
