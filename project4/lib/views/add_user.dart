@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'dart:io';
 import 'dart:typed_data';
 
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 import 'package:project4/repository/user_repo.dart';
 
 import '../CustomPages/appbar.dart';
