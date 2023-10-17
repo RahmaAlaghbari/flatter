@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import '../models/user_model.dart';
 import '../repository/user_repo.dart';
+String? selectedPermission;
+final permissionList = ['admin', 'user'];
 
 
 class UserUpdate extends StatefulWidget {
-  final int userId;
+  final String userId;
 
   UserUpdate({required this.userId});
 
@@ -13,11 +16,15 @@ class UserUpdate extends StatefulWidget {
 
 class _UserUpdate extends State<UserUpdate> {
   final _formKey = GlobalKey<FormState>();
-  final _productRepository = UserRepository();
-  TextEditingController _nameController = TextEditingController();
-  TextEditingController _priceController = TextEditingController();
-  TextEditingController _detailsController = TextEditingController();
+  final _UserRepository = UserRepository();
+  TextEditingController _perController = TextEditingController();
+  TextEditingController _fNameController = TextEditingController();
   TextEditingController _imgController = TextEditingController();
+  TextEditingController _uNameController = TextEditingController();
+  TextEditingController _passwordController = TextEditingController();
+  TextEditingController _phoneController = TextEditingController();
+  TextEditingController _genderController = TextEditingController();
+  TextEditingController _emailController = TextEditingController();
 
   bool isError = false;
   String errorMsg = "";
@@ -26,60 +33,69 @@ class _UserUpdate extends State<UserUpdate> {
   void initState() {
     super.initState();
     // Load the Product data by ID when the page is initialized
-    _loadProduct();
+    _loadUser();
   }
 
-  void _loadProduct() async {
+  void _loadUser() async {
     try {
       // Retrieve the Product by ID
-      ProductModel? product =
-      await _productRepository.getById(widget.productId);
-      if (product != null) {
-        _nameController.text = product.name!;
-        _priceController.text = product.price.toString();
-        _detailsController.text = product.details!;
-        _imgController.text = product.img!;
+      UserModel? user =
+      await _UserRepository.getById(widget.userId);
+      if (user != null) {
+        _fNameController.text = user.fName!;
+        _imgController.text = user.img!;
+        _uNameController.text = user.uName!;
+        _passwordController.text = user.password!;
+        _phoneController.text = user.phone! as String;
+        _perController.text = user.per!;
+        _genderController.text = user.gender!;
+        _emailController.text = user.email!;
+
       }
     } catch (e) {
       // Handle any errors
-      print('Error loading Product: $e');
+      print('Error loading user: $e');
     }
   }
 
-  void _updateProduct() async {
+  void _updateUser() async {
     if (_formKey.currentState!.validate()) {
-      // Create a ProductModel object with the updated data
-      ProductModel updatedProduct = ProductModel(
-        id: widget.productId,
-        name: _nameController.text,
-        price: double.tryParse(_priceController.text) ?? 0.0,
-        details: _detailsController.text,
-        img: _imgController.text,
-      );
-
       try {
-        // Update the Product
-        int rowsAffected = await _productRepository.update(updatedProduct);
-        if (rowsAffected > 0) {
-          // Product updated successfully
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Product updated successfully')),
+        // Retrieve the existing user data
+        UserModel? existingUser = await _UserRepository.getById(widget.userId);
+        if (existingUser != null) {
+          // Create a new UserModel object with the updated permission
+          UserModel updatedUser = UserModel(
+            id: existingUser.id,
+            per: _perController.text,
+            fName: existingUser.fName,
+            img: existingUser.img,
+            uName: existingUser.uName,
+            password: existingUser.password,
+            phone: existingUser.phone,
+            gender: existingUser.gender,
+            email: existingUser.email,
           );
-          Navigator.of(context).pop(true);
-        } else if (rowsAffected == -1) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Product name already exists')),
-          );
-        } else {
-          // Failed to update Product
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Failed to update Product')),
-          );
+
+          // Update the user with the new permission
+          Object rowsAffected = await _UserRepository.editt(updatedUser);
+          if (rowsAffected != true) {
+            // User updated successfully
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('User updated successfully')),
+            );
+            Navigator.of(context).pop(true);
+          } else {
+            // Failed to update user
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(content: Text('Failed to update user')),
+            );
+          }
         }
       } catch (e) {
         // Handle any errors
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Error updating Product')),
+          SnackBar(content: Text('Error updating user')),
         );
       }
     }
@@ -87,10 +103,15 @@ class _UserUpdate extends State<UserUpdate> {
 
   @override
   void dispose() {
-    _nameController.dispose();
-    _detailsController.dispose();
-    _priceController.dispose();
+    _perController.dispose();
+    _fNameController.dispose();
+    _passwordController.dispose();
+    _phoneController.dispose();
+    _genderController.dispose();
+    _emailController.dispose();
     _imgController.dispose();
+    _uNameController.dispose();
+
     super.dispose();
   }
 
@@ -108,41 +129,41 @@ class _UserUpdate extends State<UserUpdate> {
               key: _formKey,
               child: Column(
                 children: [
-                  TextFormField(
-                    controller: _nameController,
-                    decoration: InputDecoration(labelText: 'Name'),
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter a name';
-                      }
-                      return null;
-                    },
+                  Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: DropdownButtonFormField<String>(
+                      value: selectedPermission,
+                      onChanged: (newValue) {
+                        setState(() {
+                          selectedPermission = newValue; // Update the selected permission value
+                          _perController.text = newValue ?? ''; // Assign the selected permission to the _perController
+                        });
+                      },
+                      decoration: InputDecoration(
+                        labelText: 'Permission',
+                        labelStyle: TextStyle(fontWeight: FontWeight.bold),
+                        border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.amber),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.red),
+                          borderRadius: BorderRadius.circular(20),
+                        ),
+                      ),
+                      items: permissionList.map((permission) {
+                        return DropdownMenuItem<String>(
+                          value: permission,
+                          child: Text(permission),
+                        );
+                      }).toList(),
+                    ),
                   ),
-                  TextFormField(
-                    controller: _priceController,
-                    decoration: InputDecoration(labelText: 'Price'),
-                    keyboardType: TextInputType.number,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter a price';
-                      }
-                      if (double.tryParse(value) == null) {
-                        return 'Invalid price. Please enter a valid number.';
-                      }
-                      return null;
-                    },
-                  ),
-                  TextFormField(
-                    controller: _detailsController,
-                    decoration: InputDecoration(labelText: 'Details'),
-                  ),
-                  TextFormField(
-                    controller: _imgController,
-                    decoration: InputDecoration(labelText: 'Image'),
-                  ),
+
+
                   SizedBox(height: 16.0),
                   ElevatedButton(
-                    onPressed: _updateProduct,
+                    onPressed: _updateUser,
                     child: Text('Update'),
                   ),
                   SizedBox(height: 16.0),

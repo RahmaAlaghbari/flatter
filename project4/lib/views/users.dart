@@ -89,7 +89,7 @@ class _UserView extends State<UserView> {
                                     await Navigator.of(context).push(
                                       MaterialPageRoute(
                                         builder: (context) => UserUpdate(
-                                            userId: int.parse(list[index].id.toString()),
+                                            userId: list[index].id.toString(),
                                         ),
                                       ),
                                     );
@@ -109,7 +109,7 @@ class _UserView extends State<UserView> {
                                     var delRes = await showDialog(
                                       context: context,
                                       builder: (context) {
-                                        return UserDelete(itemId: int.parse(list[index].id.toString()));
+                                        return UserDelete(itemId: list[index].id.toString());
                                       },
                                     );
                                     if (delRes != null && delRes == true) {
