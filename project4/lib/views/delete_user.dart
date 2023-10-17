@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-import '../repositories/product_repository.dart';
 import '../repository/user_repo.dart';
 
 
 
 class UserDelete extends StatefulWidget {
   const UserDelete({super.key, required this.itemId});
-  final int itemId;
+  final String itemId;
 
   @override
   State<UserDelete> createState() => _UserDelete();
@@ -59,7 +58,7 @@ class _UserDelete extends State<UserDelete> {
                       });
                       var delRes =
                       await UserRepository().deletee(widget.itemId);
-                      if (delRes > 0) {
+                      if (delRes !=true) {
                         setState(() {
                           loading = false;
                           isError = false;

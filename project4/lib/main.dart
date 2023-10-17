@@ -5,6 +5,7 @@ import 'MainPages/Home.dart';
 import 'MainPages/login_page.dart';
 import 'MainPages/profile_page.dart';
 import 'MainPages/setting_page.dart';
+import 'MainPages/signup.dart';
 import 'dashboard/dash.dart';
 //hi rahma :)👵🕵️‍♀️
 void main() {
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: UserView(),
+      home: SignUpPage(),
       //home: ProfilePage(),
       //home: FooterBar(),
       //home:HotelColumn(),

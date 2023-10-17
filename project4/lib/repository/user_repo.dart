@@ -34,6 +34,38 @@ class UserRepository{
     }
   }
 
+  //
+  // Future<UserModel?> getById(UserModel obj) async {
+  //   try {
+  //     var res = await dio.put(
+  //       'https://65253db067cfb1e59ce6f039.mockapi.io/hotelusers/users/${obj.id}',
+  //       data: obj.toJson(),
+  //     );
+  //     if (res != null) {
+  //       return UserModel.fromJson(res);
+  //     }
+  //     return null;
+  //   } catch (e) {
+  //     rethrow;
+  //   }
+  // }
+
+  Future<UserModel?> getById(String id) async {
+    try {
+      var apiUrl = 'https://65253db067cfb1e59ce6f039.mockapi.io/hotelusers/users/$id';
+      var response = await dio.get(apiUrl); // Make the API request using Dio
+
+      if (response.statusCode == 200) {
+        var res = response.data;
+        return UserModel.fromJson(res);
+      }
+
+      return null;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
   Future<Object> addd(UserModel obj)async{
     try{
       await Future.delayed(Duration(milliseconds: 300));

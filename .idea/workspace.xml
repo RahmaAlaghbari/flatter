@@ -4,11 +4,28 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="533f9366-60fa-4a4c-8d13-15356d869663" name="Default Changelist" comment="" />
+    <list default="true" id="533f9366-60fa-4a4c-8d13-15356d869663" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project4/lib/MainPages/signup.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/flatter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flatter.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/views/delete_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/delete_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/views/edit_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/edit_user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/views/users.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/users.dart" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,6 +41,7 @@
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="dart.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
@@ -44,5 +62,17 @@
       <updated>1697398059437</updated>
     </task>
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
