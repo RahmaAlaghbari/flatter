@@ -6,6 +6,8 @@ import '../CustomPages/appbar.dart';
 import '../models/user_model.dart';
 import '../repository/user_repo.dart';
 import 'add_user.dart';
+import 'delete_user.dart';
+import 'edit_user.dart';
 
 class UserView extends StatefulWidget {
   const UserView({Key? key}) : super(key: key);
@@ -41,10 +43,12 @@ class _UserView extends State<UserView> {
 
           body: Container(child: FutureBuilder<List<UserModel>>(
             future: UserRepository().getAll(),
+
             builder: (context,snapshot){
               if(snapshot.connectionState ==ConnectionState.waiting){
                 return Center(child: CircularProgressIndicator());
               }
+
               else if(snapshot.connectionState ==ConnectionState.done){
                 if(snapshot.hasError)
                   return Center(child: Text("Error ${snapshot.error.toString()}"));
@@ -55,7 +59,14 @@ class _UserView extends State<UserView> {
                         return ListTile(leading: list[index].img == ''
                             ? Container(child: Icon(Icons.image),width: 50,height: 50,)
 
-                            : Image.file(File(list[index].img!), height: 200, width: 100, fit: BoxFit.fill,),
+                            :ClipOval(
+                          child: Image.network(
+                            list[index].img!,
+                            height: 50,
+                            width: 56,
+                            fit: BoxFit.fill,
+                          ),
+                        ),
                             title: Text("${list[index].fName}"),
                             subtitle:Row(children: [
 
@@ -65,44 +76,57 @@ class _UserView extends State<UserView> {
                             ],),
 
 
-                            // trailing:
-                            //
-                            //
-                            // Row(mainAxisSize: MainAxisSize.min,
-                            //   children: [
-                            //     IconButton(onPressed:(){
-                            //       // var res= ProRepository().getById(list[index].id!.toInt());
-                            //       //print(item.id);
-                            //       //ProEditView(item!);
-                            //       Navigator.push(
-                            //           context,
-                            //           MaterialPageRoute(
-                            //             builder: (context) => ProEditView(list[index]),
-                            //           ));
-                            //
-                            //
-                            //
-                            //     } ,icon:Icon(Icons.edit)),
-                            //     IconButton(onPressed:()async{
-                            //       var delRes=await showDialog(context: context, builder: (context){
-                            //         var id=list[index].id??0;
-                            //         return DeletePro(id.toInt());
-                            //       });
-                            //       if(delRes !=null && delRes ==true){
-                            //         setState(() {
-                            //
-                            //         });
-                            //       }
-                            //     } ,icon:Icon(Icons.delete)),
-                            //   ],
-                            // )
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
-                            //
+                            trailing:
+
+
+                            Row(mainAxisSize: MainAxisSize.min,
+                              children: [
+                                IconButton(
+                                  onPressed: () async {
+                                    // Handle the update action here
+                                    // For example, navigate to the update screen
+                                    var isUpdated =
+                                    await Navigator.of(context).push(
+                                      MaterialPageRoute(
+                                        builder: (context) => UserUpdate(
+                                            userId: int.parse(list[index].id.toString()),
+                                        ),
+                                      ),
+                                    );
+                                    if (isUpdated != null &&
+                                        isUpdated == true) {
+                                      setState(() {});
+                                    }
+                                  },
+                                  icon: Icon(Icons.edit),
+                                ),
+
+
+
+                                IconButton(
+                                  onPressed: () async {
+                                    print(list[index].id);
+                                    var delRes = await showDialog(
+                                      context: context,
+                                      builder: (context) {
+                                        return UserDelete(itemId: int.parse(list[index].id.toString()));
+                                      },
+                                    );
+                                    if (delRes != null && delRes == true) {
+                                      setState(() {});
+                                    }
+                                  },
+                                  icon: Icon(Icons.delete),
+                                ),
+                              ],
+                            )
+
+
+
+
+
+
+
 
 
                         );

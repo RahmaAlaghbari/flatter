@@ -45,7 +45,7 @@ class _userAdd extends State<userAdd> {
   bool issuccess=false;
   String error="";
   var nameCtr=TextEditingController();
-  var imgCtr="jhjdkfkfjf";
+
   var phoneCtr=TextEditingController();
   var emailCtr=TextEditingController();
   var passwordCtr=TextEditingController();
@@ -366,19 +366,19 @@ class _userAdd extends State<userAdd> {
 
                   });
                 var date={
-                "fName":"nameCtr.text",
-                  "Img":"selectedImagePath",
-                "uName":"nameCtr.text",
-                "password":"passwordCtr.text",
-                "phone":123,
-                "per":"perCtr.text",
-                "gender":"genderCtr.text",
-                "email":"emailCtr.text",
+                "fName":nameCtr.text,
+                  "img":"https://th.bing.com/th/id/R.e2981720d54bd5c7869ed4918473dbf5?rik=3km1AVdxxXLKSA&riu=http%3a%2f%2fvbconversions.com%2fwp-content%2fuploads%2f2018%2f04%2fperson-icon-6.png&ehk=N8n%2bOsRYgQcalmQs9Vv9wEsqtw93GDpSp23eQJOwfTM%3d&risl=&pid=ImgRaw&r=0",
+                "uName":nameCtr.text,
+                "password":passwordCtr.text,
+                "phone":int.parse(phoneCtr.text),
+                "per":perCtr.text,
+                "gender":genderCtr.text,
+                "email":emailCtr.text,
 
 
                 };
                 var addRes=await UserRepository().addd(UserModel.fromJson(date));
-                if(addRes==true){
+                if(addRes!=true){
                 setState(() {
                 loading=false;
                 issuccess=true;
