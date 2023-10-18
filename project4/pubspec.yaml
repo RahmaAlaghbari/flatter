@@ -43,6 +43,7 @@ dependencies:
   io: ^1.0.4
   sqflite: ^2.2.8+4
   dio: ^5.3.3
+  path_provider: ^2.1.0
 
 dev_dependencies:
   flutter_test:

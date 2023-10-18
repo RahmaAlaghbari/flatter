@@ -50,6 +50,21 @@ class UserRepository{
   //   }
   // }
 
+  Future<UserModel> login(UserModel user) async {
+    try {
+      var response = await dio.post('https://65253db067cfb1e59ce6f039.mockapi.io/hotelusers/users', data: user.toJson());
+      if (response.statusCode == 200) {
+        var data = response.data;
+        var u = UserModel.fromJson(data);
+        if (u.fName != null) {
+          return u;
+        }
+      }
+      return UserModel();
+    } catch (e) {
+      return UserModel();
+    }
+  }
   Future<UserModel?> getById(String id) async {
     try {
       var apiUrl = 'https://65253db067cfb1e59ce6f039.mockapi.io/hotelusers/users/$id';
@@ -61,9 +76,10 @@ class UserRepository{
       }
 
       return null;
-    } catch (e) {
-      rethrow;
-    }
+    }  catch (e) {
+  print('Error: $e');
+  rethrow;
+  }
   }
 
   Future<Object> addd(UserModel obj)async{
