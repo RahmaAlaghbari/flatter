@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533f9366-60fa-4a4c-8d13-15356d869663" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/project4/lib/repository/autho.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/project4/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/project4/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +35,11 @@
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="RunOnceActivity.cidr.known.project.marker" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="cidr.known.project.marker" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
