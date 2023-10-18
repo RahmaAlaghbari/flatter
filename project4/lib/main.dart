@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
 
         primarySwatch: Colors.blue,
       ),
-      home: SignUpPage(),
+      home: LoginPage(),
       //home: ProfilePage(),
       //home: FooterBar(),
       //home:HotelColumn(),
