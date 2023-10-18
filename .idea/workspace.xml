@@ -5,15 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="533f9366-60fa-4a4c-8d13-15356d869663" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/project4/lib/MainPages/signup.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/flatter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/flatter.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/MainPages/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/repository/user_repo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/lib/views/delete_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/delete_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/lib/views/edit_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/edit_user.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/project4/lib/views/users.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/views/users.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/project4/lib/MainPages/signup.dart" beforeDir="false" afterPath="$PROJECT_DIR$/project4/lib/MainPages/signup.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
