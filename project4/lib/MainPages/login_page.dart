@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import '../repository/autho.dart';
 import 'Home.dart';
 
 class LoginPage extends StatefulWidget {
@@ -16,8 +17,14 @@ class _LoginPageState extends State<LoginPage> {
   bool _isLoading = false;
   bool _isSubmitPressed = false;
 
+
+
   @override
   Widget build(BuildContext context) {
+
+    AuthenticationProvider authProvider =
+    Provider.of<AuthenticationProvider>(context, listen: false);
+
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
@@ -53,19 +60,20 @@ class _LoginPageState extends State<LoginPage> {
                       RegExp emailRegex =
                       RegExp(r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$');
                       if (value == null) {
-                        return 'email is required';
+                        return 'Email is required';
                       } else if (value.length < 10) {
-                        return 'email must be more than 10 char';
+                        return 'Email must be more than 10 characters';
                       } else if (!value.contains('@')) {
-                        return 'email must contain @';
+                        return 'Email must contain @';
                       } else if (!emailRegex.hasMatch(value)) {
-                        return 'invalid email';
+                        return 'Invalid email';
                       }
+
                       return null;
                     },
                     maxLength: 30,
                     decoration: InputDecoration(
-                      labelText: 'E-mail',
+                      labelText: 'Email',
                       focusedBorder: OutlineInputBorder(
                         borderSide: BorderSide(
                           color: Theme.of(context).primaryColorLight,
@@ -94,9 +102,9 @@ class _LoginPageState extends State<LoginPage> {
                         : AutovalidateMode.onUserInteraction,
                     validator: (value) {
                       if (value == null) {
-                        return 'password is required';
+                        return 'Password is required';
                       } else if (value.length < 3) {
-                        return 'password must be more than 3 char';
+                        return 'Password must be more than 3 characters';
                       } else {
                         return null;
                       }
@@ -142,101 +150,34 @@ class _LoginPageState extends State<LoginPage> {
                           _isSubmitPressed = true;
                         });
 
-
-
-
-                        final String loginUrl = 'https://65253db067cfb1e59ce6f039.mockapi.io/hotelusers/users';
-
-                        try {
-                          Dio dio = Dio();
-                          final response = await dio.get(
-                            loginUrl,
-                            data: {
-                              'email': _emailController.text,
-                              'password': _passwordController.text,
-                            },
-                          );
-
-                          if (response.statusCode == 200) {
-                            
-                            // Login successful
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(builder: (context) => FooterBar()),
-                            );
-                          } else {
-                            // Login failed
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text("Invalid email or password"),
-                                backgroundColor: Colors.redAccent,
-                                duration: Duration(seconds: 2),
-                              ),
-                            );
-                          }
-                        } catch (e) {
-                          // Error occurred during login API call
-                          print('Login API error: $e');
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(
-                              content: Text("An error occurred. Please try again."),
-                              backgroundColor: Colors.redAccent,
-                              duration: Duration(seconds: 2),
-                            ),
-                          );
-                        }
-                        // Perform login API call here
-                        // Replace the code below with your actual login API call
-                        // UserModel apiUser = await userRepo.login(user);
-                        // if (apiUser.id != null) {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(builder: (context) => FooterBar()),
-                        //   );
-                        // } else {
-                        //   ScaffoldMessenger.of(context).showSnackBar(
-                        //     SnackBar(
-                        //       content: Text("Invalid email or password"),
-                        //       backgroundColor: Colors.redAccent,
-                        //       duration: Duration(seconds: 2),
-                        //     ),
-                        //   );
-                        // }
-
-                        // Simulating a successful login for testing purposes
-                        await Future.delayed(Duration(seconds: 2));
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => FooterBar()),
+                        // Call the login method from the AuthenticationProvider
+                        bool loginSuccess = await authProvider.login(
+                          _emailController.text,
+                          _passwordController.text,
                         );
 
-                        setState(() {
-                          _isLoading = false;
-                          _isSubmitPressed = true;
-                        });
+                        if (loginSuccess) {
+                          // Login successful
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => FooterBar()),
+                          );
+                        } else {
+                          // Login failed
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Login failed')),
+                          );
+                        }
                       }
                     },
-                    child: Text('Submit'),
-                  ),
-                ),
-                const Text(
-                  'Don\'t have an account?',
-                  style: TextStyle(
-                    fontSize: 15,
-                  ),
-                ),
-                TextButton(
-                  child: const Text(
-                    'Sign up',
-                    style: TextStyle(
-                      color: Colors.blueAccent,
-                      fontSize: 15,
+                    child: Text(
+                      'Sign In',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
-                  onPressed: () {
-                    Navigator.of(context).pushNamed('/signup');
-                  },
                 ),
               ],
             ),
